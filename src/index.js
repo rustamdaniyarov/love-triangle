@@ -8,11 +8,14 @@ module.exports = function getLoveTrianglesCount(preferences = []) {
    preferences.unshift(0);
    
    for(let a = 1; a < preferences.length; a++){
-       let b = preferences[a];
+	   if (preferences[a] < 1){a++}
+	   let b = preferences[a];
        let c = preferences[b];
        
        result += a == preferences[c];
    }
    var randNum = result/3;
-   return randNum.toFixed();
+   if (randNum < 1){return 0}
+   else{return Math.floor(randNum);}
   };
+
